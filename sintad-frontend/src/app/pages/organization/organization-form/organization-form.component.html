@@ -1,0 +1,67 @@
+
+<h1>ENTIDAD</h1>
+<form class="example-container" [formGroup]="form" #frmExam="ngForm" (submit)="operate()">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Número documento" type="number" required formControlName="nroDocument">  
+        <small *ngIf="f_controls['nroDocument'].errors?.['required'] && f_controls['nroDocument'].touched" class="invalid">Is required</small>
+        <small *ngIf="f_controls['nroDocument'].errors?.['minlength'] && f_controls['nroDocument'].touched" class="invalid">Minlength is 3</small>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Razón Social" required formControlName="companyName">  
+        <small *ngIf="f_controls['companyName'].errors?.['required'] && f_controls['companyName'].touched" class="invalid">Is required</small>
+        <small *ngIf="f_controls['companyName'].errors?.['minlength'] && f_controls['companyName'].touched" class="invalid">Minlength is 3</small>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nombre Comercial"  required formControlName="commercialName">  
+        <small *ngIf="f_controls['commercialName'].errors?.['required'] && f_controls['commercialName'].touched" class="invalid">Is required</small>
+        <small *ngIf="f_controls['commercialName'].errors?.['minlength'] && f_controls['commercialName'].touched" class="invalid">Minlength is 3</small>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Dirección"  required formControlName="address">  
+        <small *ngIf="f_controls['address'].errors?.['required'] && f_controls['address'].touched" class="invalid">Is required</small>
+        <small *ngIf="f_controls['address'].errors?.['minlength'] && f_controls['address'].touched" class="invalid">Minlength is 3</small>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Teléfono"  formControlName="phone">  
+        <small *ngIf="f_controls['phone'].errors?.['required'] && f_controls['phone'].touched" class="invalid">Is required</small>
+        <small *ngIf="f_controls['phone'].errors?.['maxlength'] && f_controls['phone'].touched" class="invalid">maxlength is 9</small>
+        <small *ngIf="f_controls['phone'].errors?.['minlength'] && f_controls['phone'].touched" class="invalid">maxlength is 9</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Tipo documento" formControlName="document" > <!-- (selectionChange)="getCountries()" -->
+            <mat-option *ngFor="let p of (typesDocuments$ | async)" [value]="p.id">
+                {{p.name}} 
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Tipo Contribuyente" formControlName="contributor" > <!-- (selectionChange)="getCountries()" -->
+            <mat-option *ngFor="let p of (typesContributor$ | async)" [value]="p.id">
+                {{p.name}} 
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmExam.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-raised-button color="accent" type="button" routerLink="/pages/organization">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+</form>

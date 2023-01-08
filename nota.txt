@@ -1,0 +1,13 @@
+Prueba Práctica 
+Se recomienda utilizar la base de datos actualizada, puesto que se encuentra una tabla importante para la autenticación.
+O en otro caso, crear la tabla manualmente. 
+
+create table oauth_access_token (
+  token_id VARCHAR(256),
+  token blob,
+  authentication_id VARCHAR(256),
+  user_name VARCHAR(256),
+  client_id VARCHAR(256),
+  authentication blob,
+  refresh_token VARCHAR(256)
+);

@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-button>
+            <span class="title">SINTAD.</span>
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-button (click)="openExternalLink()" target="_blank">
+            <span>ABOUT</span>
+        </button>
+</mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<form class="example-container" fxLayout="column" fxLayoutAlign="center" style="margin-top:100px" [formGroup]="form" #frmLogin="ngForm" (submit)="operate()">
+
+    <div>
+        <img src="assets/sintad.png" width="128" style="display:block; margin:auto">
+    </div>
+    <div fxLayoutAlign="center">
+        <mat-form-field style="width: 350px; max-width: 100%;" appearance="standard">
+            <input matInput placeholder="Username"  required formControlName="username">  
+            <small *ngIf="f_controls['username'].errors?.['required'] && f_controls['username'].touched" class="invalid">Is required</small>
+            <small *ngIf="f_controls['username'].errors?.['minlength'] && f_controls['username'].touched" class="invalid">Minlength is 3</small>
+        </mat-form-field>
+    </div>
+
+    <div fxLayoutAlign="center" style="margin-top:10px">
+        <mat-form-field style="width:350px; max-width: 100%;" appearance="standard">
+            <input matInput placeholder="Password" required formControlName="password" type="password">  
+            <small *ngIf="f_controls['password'].errors?.['required'] && f_controls['password'].touched" class="invalid">Is required</small>
+            <small *ngIf="f_controls['password'].errors?.['minlength'] && f_controls['password'].touched" class="invalid">Minlength is 3</small>
+        </mat-form-field>
+    </div>
+
+    <div fxLayoutAlign="center" style="margin-top:20px">
+        <button mat-raised-button color="primary" type="submit" [disabled]="frmLogin.invalid">
+            <mat-icon>done</mat-icon>
+            <span>Ingresar</span>
+        </button>
+    </div>
+
+    <!--<div *ngIf="loaderService.isLoading | async" class="loader-container">
+        <mat-spinner [diameter]="50" style="top: 50%; left: 48%;"></mat-spinner>
+    </div>-->
+
+    <mat-card *ngIf="message">{{message}}</mat-card>
+    <mat-card *ngIf="error">{{error}}</mat-card>
+
+</form>
+
+<router-outlet></router-outlet>

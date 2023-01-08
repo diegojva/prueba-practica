@@ -1,0 +1,23 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem;
+}
+
+.example-container>* {
+    width: 100%;
+    
+}
+
+.invalid {
+    color: red;
+}
+  
+h1{
+    text-align: center;
+    margin: 0;
+    padding: 0.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-seri;
+    color: #f44336;
+    font-weight: 500;
+  }
